@@ -17,7 +17,7 @@ use python3 honeytrace.py
 default port is 2222
 so connect using netcat: nc localhost 2222
 
-##why a honeypot?
+ok, why a honeypot?
 it piqued my interest and  helped me learn a lot, stuff like logging, tcp behavior, python sockets etc etc which is pretty cool.
 
 ## disclaimer  
