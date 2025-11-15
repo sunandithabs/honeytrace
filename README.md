@@ -5,19 +5,19 @@ it listens on a port, acts like a real ssh login, logs whatever username/passwor
 
 i basically wanted something simple, noisy and fun to look at traffic and like  attacker behavior
 ## features  
-- fake ssh banner + login flow  
-- logs username + password attempts  
-- basic geoip lookup (city, region, country, org)  
+- fake ssh banner and a login flow  
+- logs username and password attempts  
+- basic geoip lookup 
 - fake shell (captures commands like `ls`, `cat`, `pwd` etc)  
-- timestamped logs saved automatically  
-- minimal python, runs anywhere  
+- timestamped logs are saved automatically  
+- minimal python and runs anywhere  
 
 ## how to run:
-use python3 honeytrace.py
-default port is 2222
-so connect using netcat: nc localhost 2222
+-use python3 honeytrace.py. 
+-default port is 2222
+-so connect using netcat: nc localhost 2222
 
-ok, why a honeypot?
+## why a honeypot?
 it piqued my interest and  helped me learn a lot, stuff like logging, tcp behavior, python sockets etc etc which is pretty cool.
 
 ## disclaimer  
