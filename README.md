@@ -22,3 +22,6 @@ it piqued my interest and  helped me learn a lot, stuff like logging, tcp behavi
 
 ## disclaimer  
 for learning only. don’t expose it to networks you don’t own
+
+## Requirements
+Python 3, standard library only. Each connecting IP is sent to `ipinfo.io` for the GeoIP lookup, so remove `geo_lookup` if you do not want that.
