@@ -1,27 +1,35 @@
-# honeytrace  
+# honeytrace
 
-a small, fake ssh honeypot i built to learn how attackers think and to mess around with network security,safely. 
-it listens on a port, acts like a real ssh login, logs whatever username/password someone tries, and even lets them run fake shell commands so i can watch what they'd try to do.  
+a small fake ssh honeypot in python, built to see what attackers try. it listens on a port, shows an ssh-style banner and login prompt, logs every credential attempt, then drops the visitor into a fake shell and logs the commands they type.
 
-i basically wanted something simple, noisy and fun to look at traffic and like  attacker behavior
-## features  
-- fake ssh banner and a login flow  
-- logs username and password attempts  
-- basic geoip lookup 
-- fake shell (captures commands like `ls`, `cat`, `pwd` etc)  
-- timestamped logs are saved automatically  
-- minimal python and runs anywhere  
+## features
 
-## how to run:
--use python3 honeytrace.py. 
--default port is 2222
--so connect using netcat: nc localhost 2222
+- fake ssh banner and login flow
+- logs usernames and passwords from every attempt
+- fake shell that records each command (it answers everything with `permission denied`)
+- optional geoip lookup per source ip
+- timestamped log written to `logs/honeytrace.log`
+- python 3 standard library only
 
-## why a honeypot?
-it piqued my interest and  helped me learn a lot, stuff like logging, tcp behavior, python sockets etc etc which is pretty cool.
+## run
 
-## disclaimer  
-for learning only. don’t expose it to networks you don’t own
+```bash
+python3 honeytrace.py            # listens on port 2222
+nc localhost 2222                # connect from another terminal
+```
 
-## Requirements
-Python 3, standard library only. Each connecting IP is sent to `ipinfo.io` for the GeoIP lookup, so remove `geo_lookup` if you do not want that.
+## sample log
+
+```
+[2026-01-01 12:00:00] credentials from 203.0.113.7:51234 user=admin pass=admin123
+[2026-01-01 12:00:04] cmd from 203.0.113.7:51234 -> ls
+```
+
+## notes
+
+- each connecting ip is sent to `ipinfo.io` for the geoip lookup. remove `geo_lookup` if you do not want that.
+- it binds to `0.0.0.0` and records plaintext passwords. run it on a network you own, ideally in a container or vm.
+
+## license
+
+mit. see license.
